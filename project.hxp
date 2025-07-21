@@ -789,7 +789,7 @@ class Project extends HXProject
     TESTING_ADS.apply(this, isDebug() && FEATURE_MOBILE_ADVERTISEMENTS.isEnabled(this));
 
     // Should be true on mobile builds.
-    CENSOR_EXPLETIVES.apply(this, isMobile());
+    CENSOR_EXPLETIVES.apply(this, /*isMobile()*/ false);
 
     //
     // FEATURE FLAGS
@@ -823,10 +823,10 @@ class Project extends HXProject
 
     // Should be true except on web and mobile builds.
     // Debug editors aren't built to work on web or mobile right now.
-    FEATURE_DEBUG_MENU.apply(this, !(isWeb() || isMobile()));
-    FEATURE_ANIMATION_EDITOR.apply(this, !(isWeb() || isMobile()));
-    FEATURE_CHART_EDITOR.apply(this, !(isWeb() || isMobile()));
-    FEATURE_STAGE_EDITOR.apply(this, !(isWeb() || isMobile()));
+    FEATURE_DEBUG_MENU.apply(this, !(isWeb() /*|| isMobile()*/));
+    FEATURE_ANIMATION_EDITOR.apply(this, !(isWeb() /*|| isMobile()*/));
+    FEATURE_CHART_EDITOR.apply(this, !(isWeb() /*|| isMobile()*/));
+    FEATURE_STAGE_EDITOR.apply(this, !(isWeb() /*|| isMobile()*/));
 
     // Should be true except on web builds (some asset stuff breaks it)
     FEATURE_INPUT_OFFSETS.apply(this, !isWeb());
@@ -847,9 +847,9 @@ class Project extends HXProject
     FEATURE_TOUCH_CONTROLS.apply(this, isMobile());
 
     // Should be true only on mobile release builds. Remember you can add the flag manually for testing.
-    FEATURE_MOBILE_ADVERTISEMENTS.apply(this, (isMobile() && isRelease() && envConfig != null));
-    FEATURE_MOBILE_IAP.apply(this, (isMobile() && isRelease() && envConfig != null));
-    FEATURE_MOBILE_IAR.apply(this, (isMobile() && isRelease()));
+    FEATURE_MOBILE_ADVERTISEMENTS.apply(this, (/*isMobile() &&*/ isRelease() && envConfig != null));
+    FEATURE_MOBILE_IAP.apply(this, (/*isMobile() &&*/ isRelease() && envConfig != null));
+    FEATURE_MOBILE_IAR.apply(this, (/*isMobile() &&*/ isRelease()));
 
     // The coveted ghost tapping feature.
     // Essential on mobile but delayed on desktop.
