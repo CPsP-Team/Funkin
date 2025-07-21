@@ -848,8 +848,8 @@ class Project extends HXProject
 
     // Should be true only on mobile release builds. Remember you can add the flag manually for testing.
     FEATURE_MOBILE_ADVERTISEMENTS.apply(this, (/*isMobile() &&*/ isRelease() && envConfig != null));
-    FEATURE_MOBILE_IAP.apply(this, (/*isMobile() &&*/ isRelease() && envConfig != null));
-    FEATURE_MOBILE_IAR.apply(this, (/*isMobile() &&*/ isRelease()));
+    FEATURE_MOBILE_IAP.apply(this, /*(isMobile() && isRelease() && envConfig != null)*/ false);
+    FEATURE_MOBILE_IAR.apply(this, /*(isMobile() && isRelease())*/ false);
 
     // The coveted ghost tapping feature.
     // Essential on mobile but delayed on desktop.
